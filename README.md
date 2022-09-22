@@ -29,12 +29,13 @@ A project useed for team collaboration in CS360
 
 
 6. สร้างไฟล์ index.html เพื่อเป็นUIของระบบ login
-รายละเอียดไฟล์ index.html : 
+(รายละเอียดไฟล์ index.html : 
+[index.txt](https://github.com/pummyketak/CS360_team_group/files/9618769/index.txt))
+
 
 โดยกำหนดบรรทัด window.open ให้เป็นลิงค์urlไปยัง webchat ดังรูป
 
-///
-
+![image](https://user-images.githubusercontent.com/89339473/191563502-abc17b6b-7544-45c8-8cdc-e9391c6be506.png)
 
 
 7. การ deploy ตัวlogin ให้กดที่ "การทำให้ใช้งานได้" ปุ่มสีฟ้าด้านบนขวา 
