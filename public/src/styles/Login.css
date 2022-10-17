@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+body {
+    position: absolute;
+    width: auto;
+    height: auto;
+    background: #FCF1F2;
+    margin: 0%;
+}
+
+.login-box {
+    position: absolute;
+    width: 624px;
+    height: 1024px;
+    left: 0px;
+    top: 0px;
+    margin: 0%;
+
+    background-color: #FFFFFF;
+}
+
+.login-box .login-menu {
+    position: relative;
+    text-align: center;
+    width: 428px;
+    height: 594px;
+    left: 98px;
+    top: 104px;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+
+    line-height: 42px;
+}
+
+.login-box .login-menu .logo {
+    position: relative;
+    width: auto;
+    height: 42px;
+    left: auto;
+    font-size: 32px;
+
+    color: #F64E60;
+}
+
+.login-box .login-menu .login {
+    position: relative;
+    width: auto;
+    height: 373px;
+    font-size: 30px;
+    top: 100px;
+}
+
+.login-box .login-menu .login .header {
+    margin: 0%;
+    font-size: 30px;
+}
+
+.login-box .login-menu .login .p {
+    text-align: left;
+    font-size: 16px;
+}
+
+.login-box .login-menu .login .user-box {
+    position: relative;
+    width: 428px;
+    height: 65px;
+    border: 0;
+    background: #F3F6F9;
+    border-radius: 10px;
+}
+
+.login-box .login-menu .login .pass-box {
+    position: relative;
+    width: 428px;
+    height: 65px;
+    border: 0;
+    background: #F3F6F9;
+    border-radius: 10px;
+}
+
+.login-box .login-menu .login .button {
+    position: relative;
+    margin: 8%;
+    width: 192px;
+    height: 56px;
+    border: 0;
+    background: #F64E60;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+}
