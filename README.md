@@ -50,3 +50,7 @@ To get a local copy up and running follow these simple steps.
 ## Credit
 
 Proto Project (https://github.com/devXprite/javascript-chatbot).
+
+<!-- Task 4 -->
+
+Hello, It on test 4.
