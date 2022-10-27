@@ -1,7 +1,7 @@
 <div id="top"></div>
 
 <div align="center">
-    <h2>TU News</h2>
+    <h2>TU News Yo WTF</h2>
 </div>
 
 <!-- GETTING STARTED -->
