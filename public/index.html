@@ -30,16 +30,19 @@
     <h2>TU News</h2>
     <li><a href="/AdminLogin" id="btnlogin">Login</a></li>
   </header>
+  
+  <button class="open-button" onclick="openForm()">Chat</button>
   <!-- chatbox -->
-  <div class="chatbot-box">
+  <div class="chatbot-box" id="myForm">
     <div>
-      <div class="chat-header">Chatbot Support</div>
+      <div class="chat-header" >
+        <span>Chatbot Support</td>
+      </div> 
       <p class="typing">bot is typing. . .</p>
     </div>
 
     <main>
     </main>
-
     <form id="chat-form">
       <input type="text" class="chat-input" required>
       <button type="submit" class="chat-submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"

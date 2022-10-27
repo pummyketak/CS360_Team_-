@@ -1,0 +1,42 @@
+.event-box {
+    position: relative;
+    width: 428px;
+    height: 65px;
+    border: 0;
+    background: #F3F6F9;
+    border-radius: 10px;
+}
+
+.detail-box {
+    position: relative;
+    width: 428px;
+    height: 65px;
+    border: 0;
+    background: #F3F6F9;
+    border-radius: 10px;
+}
+
+.formev {
+    position: fixed;
+    width: 838px;
+    height: 537px;
+    left: 301px;
+    top: 244px;
+    border: 0;
+    background: #F64E60;
+    border-radius: 10px;
+}
+
+.button {
+    position: relative;
+    margin: 8%;
+    width: 192px;
+    height: 56px;
+    border: 0;
+    background: #F64E60;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+}
+

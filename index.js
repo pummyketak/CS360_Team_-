@@ -36,6 +36,7 @@ const bugReportUrl = process.env.DEVELOPER_NAME || pkg.bugs.url;
 
 const app = express();
 const port = process.env.PORT || 3000;
+const data = require("./public/src/json/data.json");
 
 let allQustions = [];
 
@@ -56,11 +57,9 @@ allQustions = _.compact(allQustions);
 const changeUnit = (amount, unitFrom, unitTo) => {
   try {
     const convertValue = convert(amount).from(unitFrom).to(unitTo);
-    const returnMsg = `${amount} ${convert().describe(unitFrom).plural}(${
-      convert().describe(unitFrom).abbr
-    }) is equle to ${convertValue} ${convert().describe(unitTo).plural}(${
-      convert().describe(unitTo).abbr
-    }).`;
+    const returnMsg = `${amount} ${convert().describe(unitFrom).plural}(${convert().describe(unitFrom).abbr
+      }) is equle to ${convertValue} ${convert().describe(unitTo).plural}(${convert().describe(unitTo).abbr
+      }).`;
 
     return returnMsg;
   } catch (error) {
@@ -253,13 +252,42 @@ const sendAnswer = async (req, res) => {
   }
 };
 
+const saveJson = (req, res) => {
+  req.on('data', chunk => {
+    let json = JSON.parse(chunk);
+
+    let outputJson = [];
+    let data = fs.readFileSync('./src/json/data.json', { encoding: 'utf-8' });
+    outputJson = JSON.parse(data);
+    outputJson.push(json);
+    outputJson = JSON.stringify(outputJson);
+
+    fs.writeFileSync('', outputJson)
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.write('บันทึกสำเร็จ');
+    res.end();
+  })
+};
+
+const updateJson = (req, res) => {
+  req.on('data', chunk => {
+    let json = JSON.parse(chunk);
+    json = JSON.stringify(json);
+
+    fs.writeFileSync('json/data.json', json)
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.write('อัพเดทสถานะเรียบร้อย');
+    res.end();
+  })
+};
+
 const loginP = async (req, res) => {
   try {
-    const loginHtml = await fs.readFileSync(path.join(__dirname, "public/AdminLogin.html"),"utf8",)
+    const loginHtml = await fs.readFileSync(path.join(__dirname, "public/AdminLogin.html"), "utf8",)
     res.status(200).send(loginHtml);
   } catch (err) {
     const pageNotFoundHtml = await fs.readFileSync(
-    path.join(__dirname, "public/404.html"),"utf8",);
+      path.join(__dirname, "public/404.html"), "utf8",);
     res.status(404).send(pageNotFoundHtml);
     console.log(err);
   }
@@ -267,11 +295,23 @@ const loginP = async (req, res) => {
 
 const adminP = async (req, res) => {
   try {
-    const mpHtml = await fs.readFileSync(path.join(__dirname, "public/mainpage.html"),"utf8",)
+    const mpHtml = await fs.readFileSync(path.join(__dirname, "public/mainpage.html"), "utf8",)
     res.status(200).send(mpHtml);
   } catch (err) {
     const pageNotFoundHtml = await fs.readFileSync(
-    path.join(__dirname, "public/404.html"),"utf8",);
+      path.join(__dirname, "public/404.html"), "utf8",);
+    res.status(404).send(pageNotFoundHtml);
+    console.log(err);
+  }
+}
+
+const eventP = async (req, res) => {
+  try {
+    const mpHtml = await fs.readFileSync(path.join(__dirname, "public/eventpage.html"), "utf8",)
+    res.status(200).send(mpHtml);
+  } catch (err) {
+    const pageNotFoundHtml = await fs.readFileSync(
+      path.join(__dirname, "public/404.html"), "utf8",);
     res.status(404).send(pageNotFoundHtml);
     console.log(err);
   }
@@ -301,6 +341,9 @@ app.use(serveStatic(path.join(__dirname, "public")));
 //app.get("*", notFound);
 app.get("/AdminLogin", loginP);
 app.get("/AdminPage", adminP);
+app.get("/EventManage", eventP);
+app.post("/api/save", saveJson);
+app.post("/api/update", updateJson);
 
 app.listen(port, () => console.log(`app listening on port ${port}!. On http://localhost:${port}`));
 
