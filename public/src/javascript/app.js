@@ -1,21 +1,53 @@
 // submit form
+var BooImg = 0;
+var chatimg = "";
+
+function B_IMG(){
+  BooImg = 1;
+}
+function preview_2(obj) {
+  if (FileReader) {
+    var reader = new FileReader();
+    reader.readAsDataURL(obj.files[0]);
+    reader.onload = function (e) {
+      var image = new Image();
+      image.src = e.target.result;
+      image.onload = function () {
+        chatimg = image.src
+      };
+    }
+  }
+  else {
+    // Not supported
+  }
+}
+
 const submitForm = () => {
   const chatInput = $(".chat-input").val();
-
-  $("main").append(`
-  <div class="chat-msg-box clint">
-    <p>${chatInput}</p>
-  </div>
-  `);
-
-  $.ajax({
-    url: `./api/question/?q=${encodeURIComponent(chatInput)}`,
-    method: "GET",
-    cache: false,
-    beforeSend: () => {
-      $(".chat-input").val("");
-      $(".typing").show();
+  if (chatInput != "" || BooImg == 1) {
+    if(BooImg == 1){
       $("main").append(`
+    <div class="chat-msg-box clint">
+      <img src="${chatimg}" style="max-height: 200;max-width: 200px;">
+    </div>`);
+    BooImg = 0;
+    }else{
+      $("main").append(`
+    <div class="chat-msg-box clint">
+      <p>${chatInput}</p>
+    </div>`);
+    }
+    
+      
+
+    $.ajax({
+      url: `./api/question/?q=${encodeURIComponent(chatInput)}`,
+      method: "GET",
+      cache: false,
+      beforeSend: () => {
+        $(".chat-input").val("");
+        $(".typing").show();
+        $("main").append(`
         <div class="chat-msg-box bot">
           <div class="spinner">
             <div class="bounce1"></div>
@@ -24,24 +56,27 @@ const submitForm = () => {
           </div>
         </div>
         `);
-      if ($(".chat-msg-box").length >= 10) {
-        $([document.documentElement, document.body]).animate({
-          scrollTop: $(".chat-msg-box.bot:last-child").offset().top,
-        }, { duration: 500 });
-      }
-    },
-    success: (data) => {
-      const response = (data.responseText).replace(/\n/gm, "</br>");
-      $(".chat-msg-box.bot:last-child").html(`<p>${response}</p>`);
-    },
-    error: () => {
-      $(".chat-msg-box.bot:last-child").remove();
-    },
-    complete: () => {
-      $(".typing").hide();
-    },
-  });
-};
+        if ($(".chat-msg-box").length >= 10) {
+          $([document.documentElement, document.body]).animate({
+            scrollTop: $(".chat-msg-box.bot:last-child").offset().top,
+          }, { duration: 500 });
+        }
+      },
+      success: (data) => {
+        const response = (data.responseText).replace(/\n/gm, "</br>");
+        $(".chat-msg-box.bot:last-child").html(`<p>${response}</p>`);
+      },
+      error: () => {
+        $(".chat-msg-box.bot:last-child").remove();
+      },
+      complete: () => {
+        $(".typing").hide();
+      },
+    });
+  };
+}
+
+
 
 window.onload = () => {
   setTimeout(() => {
