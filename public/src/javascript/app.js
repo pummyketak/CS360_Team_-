@@ -152,3 +152,14 @@ const typed = new Typed(".chat-input", {
   bindInputFocusEvents: false,
   shuffle: true,
 });
+
+function openForm() {
+  if (document.getElementById("myForm").style.display == "block")
+    closeForm()
+  else
+    document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
