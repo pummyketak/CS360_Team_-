@@ -44,7 +44,8 @@
     <main>
     </main>
     <form id="chat-form">
-      <input type="text" class="chat-input" required>
+      <input type="text" class="chat-input" >
+      <input type="file" id="img" accept="image/*" class="chat-input-img" onchange="preview_2(this), B_IMG()" class="chat-input">
       <button type="submit" class="chat-submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
           viewBox="0 0 24 24">
           <path
