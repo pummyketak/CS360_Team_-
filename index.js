@@ -324,6 +324,18 @@ const eventP = async (req, res) => {
   }
 }
 
+const eventE = async (req, res) => {
+  try {
+    const mpHtml = await fs.readFileSync(path.join(__dirname, "public/editevent.html"), "utf8",)
+    res.status(200).send(mpHtml);
+  } catch (err) {
+    const pageNotFoundHtml = await fs.readFileSync(
+      path.join(__dirname, "public/404.html"), "utf8",);
+    res.status(404).send(pageNotFoundHtml);
+    console.log(err);
+  }
+}
+
 const notFound = async (req, res) => {
   try {
     const pageNotFoundHtml = await fs.readFileSync(
@@ -349,6 +361,7 @@ app.use(serveStatic(path.join(__dirname, "public")));
 app.get("/AdminLogin", loginP);
 app.get("/AdminPage", adminP);
 app.get("/EventManage", eventP);
+app.get("/EventEdit", eventE);
 app.post("/api/save", saveJson);
 app.post("/api/update", updateJson);
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Main Page</title>
+    <link rel="stylesheet" href="./src/styles/normalize.min.css" />
+    <link rel="stylesheet" href="./src/styles/compiled.min.css" />
+    <link rel="stylesheet" href="./src/styles/styles.css" />
+    <link rel="stylesheet" href="./src/styles/main.css" />
+</head>
+
+<body>
+    <!-- header -->
+    <header>
+        <h2>TU News</h2>
+        <div>
+            <li>
+                <a href="/EventManage">Event</a>
+            </li>
+        </div>
+    </header>
+    <div class="formev">
+        <form id="event-form">
+            <label for="event-name">ชื่อ Event</label>
+            <input type="text" id="event-name" class="event-box" /><br>
+            <label for="event-detail">รายละเอียด Event</label>
+            <input type="text" id="event-detail" class="detail-box" /><br>
+            <label for="event-date">วันที่เริ่มจัด Event</label>
+            <input type="datetime-local" id="event-date" /><br>
+            <label for="event-outdate">วันที่สิ้นสุด Event</label>
+            <input type="datetime-local" id="event-outdate" /><br>
+            <button type="submit" class="button">บันทึก</button>
+        </form>
+    </div>
+    <script src="./src/javascript/jquery.min.js"></script>
+    <script src="./src/javascript/typed.min.js"></script>
+    <script src="./src/javascript/update.js"></script>
+</body>
+
+</html>
