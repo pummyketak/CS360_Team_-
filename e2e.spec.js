@@ -4,15 +4,16 @@ describe('TU News E2E Testing', () => {
     })
 
     it('should Send Text to Chatbot and Chatbot will send text back', async () => {
+        await page.click('button.open-button');
         await page.type('input.chat-input', 'ปฏิทินกิจกรรมต่างๆจะสามารถดูได้จากที่ไหนครับ');
         await page.click('Button.chat-submit');
         // await Promise.all([
-            
         //     page.$eval('Button.chat-submit', element =>
-        //         element.click()
-        //     )
+        //     element.click()
+        // )
         // ])
         // await expect (page).toMatch('main', { text: 'สามารถดูปฏิทินกิจกรรมได้ที่ ลิงค์: https://www.reg.tu.ac.th/th/Picture/AttFile/c4c86cd7-9ad7-4bb6-b591-4fa2762e5e55' })
+        await page.click('button.open-button');
     })
     it('should Display Login Admin Page on click button', async () => {
         await Promise.all([

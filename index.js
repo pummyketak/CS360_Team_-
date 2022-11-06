@@ -36,7 +36,7 @@ const bugReportUrl = process.env.DEVELOPER_NAME || pkg.bugs.url;
 
 const app = express();
 const port = process.env.PORT || 3000;
-const data = require("./public/src/json/data.json");
+const datajs = fs.readFileSync('./public/src/json/data.json', 'utf-8');
 
 let allQustions = [];
 
@@ -252,29 +252,36 @@ const sendAnswer = async (req, res) => {
   }
 };
 
-const saveJson = (req, res) => {
+const saveJson = async (req, res) => {
   req.on('data', chunk => {
-    let json = JSON.parse(chunk);
+    let body = [];
+    body.push(chunk);
+    body = Buffer.concat(body).toString();
+    let json = JSON.parse(body);
 
     let outputJson = [];
-    let data = fs.readFileSync('./src/json/data.json', { encoding: 'utf-8' });
-    outputJson = JSON.parse(data);
+    // let data = fs.readFileSync('./data.js', { encoding: 'utf-8' });
+    // outputJson = JSON.parse(data);
+    outputJson = JSON.parse(datajs);
     outputJson.push(json);
     outputJson = JSON.stringify(outputJson);
 
-    fs.writeFileSync('', outputJson)
+    fs.writeFileSync('./public/src/json/data.json', outputJson)
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.write('บันทึกสำเร็จ');
     res.end();
   })
 };
 
-const updateJson = (req, res) => {
+const updateJson = async (req, res) => {
   req.on('data', chunk => {
-    let json = JSON.parse(chunk);
+    let body = [];
+    body.push(chunk);
+    body = Buffer.concat(body).toString();
+    let json = JSON.parse(body);
     json = JSON.stringify(json);
 
-    fs.writeFileSync('json/data.json', json)
+    fs.writeFileSync('./public/src/json/data.json', json)
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.write('อัพเดทสถานะเรียบร้อย');
     res.end();
