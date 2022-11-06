@@ -372,12 +372,12 @@ footer {
 .divbody {
 
     top: 100px;
-    position: relative;
+    position: fixed;
     color: #000;
     left: 100px;
     right: 100px;
     margin: 0%;
-
+    width: auto;
 }
 
 .newstab {
@@ -448,15 +448,11 @@ footer {
 }
 
 .showevent {
-    border-radius: 25px;
-    width: 3000px;
-    height: 300px;
-    top: -480px;
-    border-radius: 10px;
-    position: relative;
-    margin: 0%;
+    position: fixed;
     background-color:#B42935;
-    left: -10%;
+    top: 80%;
+    height: 300px;
+    width: 100%;
 }
 
 .eventbox1 {
@@ -464,7 +460,6 @@ footer {
     padding: 20px; 
     width: 250px;
     height: 250px;
-    top: -750px;
     border-radius: 10px;
     color: black;
     position: relative;
@@ -478,7 +473,6 @@ footer {
     padding: 20px; 
     width: 250px;
     height: 250px;
-    top: -1000px;
     border-radius: 10px;
     color: black;
     position: relative;
