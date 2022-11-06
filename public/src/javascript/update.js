@@ -6,13 +6,13 @@ const submitForm = () => {
     var dataJson = { "event": eventInp, "detail": detailInp, "date": dateInp, "outdate": outdateInp }
 
     $.ajax({
-        url: `./api/save`,
+        url: `./api/update`,
         method: "POST",
         cache: false,
         beforeSend: () => {
             var myJSON = JSON.stringify(dataJson);
             const xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "/api/save", true);
+            xhttp.open("POST", "/api/update", true);
             xhttp.send(myJSON);
         },
         success: () => {
