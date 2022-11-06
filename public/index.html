@@ -28,60 +28,70 @@
   <!-- header -->
   <header>
     <h1>TU News</h1>
-    <li><a href="/AdminLogin" id="btnlogin">Login</a></li>   
+    <li><a href="/AdminLogin" id="btnlogin">Login</a></li>
   </header>
 
-<div class="divbody">
-  <h1>NEWS & ANNOUNCEMENTS</h1>
-  <div class="newstab">
-    <p>NEWS</p> 
+  <div class="divbody">
+    <h1>NEWS & ANNOUNCEMENTS</h1>
+    <div class="newstab">
+      <p>NEWS</p>
+    </div>
+
+    <div class="announcementtab">
+      <p>ANNOUNCEMENTS</p>
+    </div>
+    <div class="newsbox1">
+      <p>NEWS</p>
+    </div>
+
+    <div class="newsbox2">
+      <p>NEWS</p>
+    </div>
+
+    <div class="newsbox3">
+      <p>NEWS</p>
+    </div>
+
+    <div class="showevent">
+    </div>
+
+    <div class="eventbox1">
+      <p>Event</p>
+    </div>
+
+    <div class="eventbox2">
+      <p>Event</p>
+    </div>
   </div>
-  
-  <div class="announcementtab">
-    <p>ANNOUNCEMENTS</p>
-  </div>
-<div class="newsbox1">
-  <p>NEWS</p> 
-</div>
-  
-<div class="newsbox2">
-  <p>NEWS</p> 
-</div>
-
-<div class="newsbox3">
-  <p>NEWS</p> 
-</div>
-
-<div class="showevent">
-</div>
-
-<div class="eventbox1">
-  <p>Event</p> 
-</div>
-
-<div class="eventbox2">
-  <p>Event</p> 
-</div>
-</div>
 
 
-  
-  
-  <button class="open-button" onclick="openForm()">Chat</button>
+
+
+  <button class="open-button" onclick="openForm()"></button>
   <!-- chatbox -->
   <div class="chatbot-box" id="myForm">
     <div>
-      <div class="chat-header" >
+      <div class="chat-header">
         <span>Chatbot Support</td>
-      </div> 
+      </div>
       <p class="typing">bot is typing. . .</p>
     </div>
 
     <main>
     </main>
     <form id="chat-form">
-      <input type="text" class="chat-input" >
-      <input type="file" id="img" accept="image/*" class="chat-input-img" onchange="preview_2(this), B_IMG()" class="chat-input">
+      <input type="text" class="chat-input">
+      <div class="chat-input-img">
+
+      </div>
+      <div class="image-upload">
+        <label for="file-input">
+          <img src="https://icons.iconarchive.com/icons/icons8/ios7/32/Very-Basic-Paper-Clip-icon.png">
+        </label>
+      
+        <input type="file" id="file-input" accept="image/*" onchange="preview_2(this), B_IMG()" >
+      </div>
+      
       <button type="submit" class="chat-submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
           viewBox="0 0 24 24">
           <path
@@ -90,7 +100,7 @@
       </button>
     </form>
   </div>
-  
+
   <script src="./src/javascript/jquery.min.js"></script>
   <script src="./src/javascript/typed.min.js"></script>
   <script src="./src/javascript/app.js"></script>
