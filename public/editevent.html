@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./src/styles/main.css" />
 </head>
 
-<body>
+<body onload="loadDoc()">
     <!-- header -->
     <header>
         <h2>TU News</h2>
@@ -19,22 +19,12 @@
             </li>
         </div>
     </header>
-    <div class="formev">
-        <form id="event-form">
-            <label for="event-name">ชื่อ Event</label>
-            <input type="text" id="event-name" class="event-box" /><br>
-            <label for="event-detail">รายละเอียด Event</label>
-            <input type="text" id="event-detail" class="detail-box" /><br>
-            <label for="event-date">วันที่เริ่มจัด Event</label>
-            <input type="datetime-local" id="event-date" /><br>
-            <label for="event-outdate">วันที่สิ้นสุด Event</label>
-            <input type="datetime-local" id="event-outdate" /><br>
-            <button type="submit" class="button">บันทึก</button>
-        </form>
+    <div id="table" style="height: 100%;">
+
     </div>
     <script src="./src/javascript/jquery.min.js"></script>
     <script src="./src/javascript/typed.min.js"></script>
-    <script src="./src/javascript/update.js"></script>
+    <script src="./src/javascript/allevent.js"></script>
 </body>
 
 </html>

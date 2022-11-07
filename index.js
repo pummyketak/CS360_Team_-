@@ -278,14 +278,34 @@ const updateJson = async (req, res) => {
     let body = [];
     body.push(chunk);
     body = Buffer.concat(body).toString();
-    let json = JSON.parse(body);
-    json = JSON.stringify(json);
+    var sbody = body.split('+');
+    var json = JSON.parse(sbody[0]);
+    var num = parseInt(sbody[1]);
+    console.log(typeof num);
+    console.log(num);
+    // json = JSON.stringify(json);
 
-    fs.writeFileSync('./public/src/json/data.json', json)
+    let outputJson = [];
+    let spliceJson = [];
+    // let data = fs.readFileSync('./data.js', { encoding: 'utf-8' });
+    // outputJson = JSON.parse(data);
+    outputJson = JSON.parse(datajs);
+    spliceJson = outputJson.splice(num,1, json);
+    outputJson = JSON.stringify(outputJson);
+
+    fs.writeFileSync('./public/src/json/data.json',  outputJson)
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.write('อัพเดทสถานะเรียบร้อย');
     res.end();
   })
+};
+
+const getJson = async (req, res) => {
+  var dataJsonp = JSON.parse(datajs);
+  // console.log(datajs)
+  res.type('application/json') // =>'application/json'
+  res.send(dataJsonp);
+  // res.send(datajs);
 };
 
 const loginP = async (req, res) => {
@@ -335,6 +355,17 @@ const eventE = async (req, res) => {
     console.log(err);
   }
 }
+const infoP = async (req, res) => {
+  try {
+    const mpHtml = await fs.readFileSync(path.join(__dirname, "public/info.html"), "utf8",)
+    res.status(200).send(mpHtml);
+  } catch (err) {
+    const pageNotFoundHtml = await fs.readFileSync(
+      path.join(__dirname, "public/404.html"), "utf8",);
+    res.status(404).send(pageNotFoundHtml);
+    console.log(err);
+  }
+}
 
 const notFound = async (req, res) => {
   try {
@@ -362,8 +393,10 @@ app.get("/AdminLogin", loginP);
 app.get("/AdminPage", adminP);
 app.get("/EventManage", eventP);
 app.get("/EventEdit", eventE);
+app.get("/info", infoP);
 app.post("/api/save", saveJson);
 app.post("/api/update", updateJson);
+app.get("/api/getJson", getJson);
 
 app.listen(port, () => console.log(`app listening on port ${port}!. On http://localhost:${port}`));
 
