@@ -281,8 +281,6 @@ const updateJson = async (req, res) => {
     var sbody = body.split('+');
     var json = JSON.parse(sbody[0]);
     var num = parseInt(sbody[1]);
-    console.log(typeof num);
-    console.log(num);
     // json = JSON.stringify(json);
 
     let outputJson = [];
