@@ -36,7 +36,6 @@ const bugReportUrl = process.env.DEVELOPER_NAME || pkg.bugs.url;
 
 const app = express();
 const port = process.env.PORT || 3000;
-const datajs = fs.readFileSync('./public/src/json/data.json', 'utf-8');
 
 let allQustions = [];
 
@@ -262,6 +261,7 @@ const saveJson = async (req, res) => {
     let outputJson = [];
     // let data = fs.readFileSync('./data.js', { encoding: 'utf-8' });
     // outputJson = JSON.parse(data);
+    let datajs = fs.readFileSync('./public/src/json/data.json', 'utf-8');
     outputJson = JSON.parse(datajs);
     outputJson.push(json);
     outputJson = JSON.stringify(outputJson);
@@ -287,6 +287,7 @@ const updateJson = async (req, res) => {
     let spliceJson = [];
     // let data = fs.readFileSync('./data.js', { encoding: 'utf-8' });
     // outputJson = JSON.parse(data);
+    let datajs = fs.readFileSync('./public/src/json/data.json', 'utf-8');
     outputJson = JSON.parse(datajs);
     spliceJson = outputJson.splice(num,1, json);
     outputJson = JSON.stringify(outputJson);
@@ -299,6 +300,7 @@ const updateJson = async (req, res) => {
 };
 
 const getJson = async (req, res) => {
+  let datajs = fs.readFileSync('./public/src/json/data.json', 'utf-8');
   var dataJsonp = JSON.parse(datajs);
   // console.log(datajs)
   res.type('application/json') // =>'application/json'

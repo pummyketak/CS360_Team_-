@@ -18,7 +18,6 @@ function loadInfo() {
             $.get("/api/getJson", function (responseText) {
                 getjsons = responseText;
                 datajson = getjsons;
-                console.log(datajson[i])
                 document.getElementById("event-name").value = datajson[i].event;
                 document.getElementById("event-detail").value = datajson[i].detail;
                 document.getElementById("event-date").value = datajson[i].date;
