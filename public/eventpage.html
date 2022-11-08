@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Main Page</title>
+    <title>Add New/Event</title>
     <link rel="stylesheet" href="./src/styles/normalize.min.css" />
     <link rel="stylesheet" href="./src/styles/compiled.min.css" />
     <link rel="stylesheet" href="./src/styles/styles.css" />
@@ -14,27 +14,41 @@
     <header>
         <h2>TU News</h2>
         <div>
-            <li>
-                <a href="/EventManage">Event</a>
-            </li>
+            <li><a href="/">logout</a></li>
         </div>
     </header>
+    <div class="add">
+        <h1>ADD</h1>
+    </div>
+
     <div class="formev">
-        <form id="event-form">
-            <label for="event-name">ชื่อ Event</label>
-            <input type="text" id="event-name" class="event-box" /><br>
-            <label for="event-detail">รายละเอียด Event</label>
-            <input type="text" id="event-detail" class="detail-box" /><br>
+        <form id="event-form"><br><br><br><br>
+            <label for="topictype">ประเภทของข้อมูล</label>
+            <select class="selectbox">
+                <option value="">---โปรดเลือก---</option>
+                <option value="news">News</option>
+                <option value="events">Events</option>
+              </select><br><br>
+
+            <label for="event-name" class="texttopic">หัวข้อ</label>
+            <input type="text" id="event-name" class="event-box" /><br><br>
+            <label for="event-detail" class="texttopic">เนื้อหา Event</label>
+            <input type="text" id="event-detail" class="detail-box" /><br><br>
             <label for="event-date">วันที่เริ่มจัด Event</label>
-            <input type="datetime-local" id="event-date" /><br>
-            <label for="event-outdate">วันที่สิ้นสุด Event</label>
-            <input type="datetime-local" id="event-outdate" /><br>
-            <button type="submit" class="button">บันทึก</button>
+            <input type="datetime-local" id="event-date" class="datestart"/>&nbsp;&nbsp; <label for="event-outdate">วันที่สิ้นสุด Event</label> <input type="datetime-local" id="event-outdate" /><br><br><br>
+            <label for="myfile">เลือกรูปภาพ</label>
+            <input type="file" id="myfile" name="myfile">
+            <button type="submit" class="button">ยืนยัน</button>
+            
         </form>
     </div>
     <script src="./src/javascript/jquery.min.js"></script>
     <script src="./src/javascript/typed.min.js"></script>
     <script src="./src/javascript/Event.js"></script>
+
+    <footer>
+    </footer>
+
 </body>
 
 </html>

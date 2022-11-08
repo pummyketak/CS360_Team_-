@@ -380,6 +380,31 @@ footer {
     width: auto;
 }
 
+.divtable1 {
+    top: 25%;
+    position: fixed;
+    left: 100px;
+    height: 300px;
+    right: 100px;
+    margin: 0%;
+    width: auto;
+    justify-content: space-around;
+    display: flex;
+    transition: all 1s;
+}
+.divtable2 {
+    right: 100px;
+    width: auto;
+    position: fixed;
+    top: 70%;
+    justify-content: space-around;
+    display: flex;
+    transition: all 1s;
+    height: 210px;
+    left: 290px;
+    margin: 0%;
+}
+
 .newstab {
 
     width: 65px;
@@ -406,12 +431,39 @@ footer {
     margin: 0%;
 }
 
+.addnews {
+
+    top: 180px;
+    width: 55px;
+    height: 30px;
+    padding: 9px;
+    border-radius: 10px;
+    color: white;
+    position: fixed;
+    background-color: #B42935;
+    right: 330px;
+    margin: 0%;
+}
+
+.editnews {
+
+    top: 180px;
+    width: 55px;
+    height: 30px;
+    padding: 9px;
+    border-radius: 10px;
+    color: white;
+    position: fixed;
+    background-color: #B42935;
+    right: 250px;
+    margin: 0%;
+}
+
 .newsbox1 {
     border-radius: 25px;
     padding: 20px; 
     width: 300px;
     height: 300px;
-    top: 20px;
     border-radius: 10px;
     color: black;
     position: relative;
@@ -450,34 +502,79 @@ footer {
 .showevent {
     position: fixed;
     background-color:#B42935;
-    top: 80%;
-    height: 300px;
+    top: 63%;
+    height: 320px;
     width: 100%;
+    justify-content: space-around;
+    display: flex;
+    transition: all 1s;
 }
 
 .eventbox1 {
     border-radius: 25px;
     padding: 20px; 
-    width: 250px;
-    height: 250px;
+    width: 230px;
+    height: 210px;
     border-radius: 10px;
     color: black;
     position: relative;
-    left: 1000px;
     margin: 0%;
     background-color: white;
 }
 
 .eventbox2 {
+    top: 50px;
     border-radius: 25px;
     padding: 20px; 
-    width: 250px;
-    height: 250px;
+    width: 230px;
+    height: 210px;
     border-radius: 10px;
     color: black;
     position: relative;
-    left: 600px;
     margin: 0%;
     background-color: white;
+}
+
+.addevents {
+
+    top: 650px;
+    width: 55px;
+    height: 30px;
+    padding: 9px;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    position: fixed;
+    background-color: #ffffff;
+    right: 330px;
+    margin: 0%;
+}
+
+.editevents {
+
+    top: 650px;
+    width: 55px;
+    height: 30px;
+    padding: 9px;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    position: fixed;
+    background-color: #ffffff;
+    right: 250px;
+    margin: 0%;
+}
+footer {
+    
+    background-color: #414141;
+    position: fixed;
+    width: 100vw;
+    height: 5em;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    box-shadow: #000 2px 0 4px;
+    justify-content: space-around;
+    transition: all 1s;
+    font-family: "Comfortaa", cursive;
+    z-index: 100;
 }
 /*# sourceMappingURL=compiled.min.css.map */

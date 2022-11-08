@@ -1,9 +1,10 @@
 const submitForm = () => {
+    const typeInp = $(".selectbox").val();
     const eventInp = $(".event-box").val();
     const detailInp = $(".detail-box").val();
     const dateInp = $("input#event-date").val();
     const outdateInp = $("input#event-outdate").val();
-    var dataJson = { "event": eventInp, "detail": detailInp, "date": dateInp, "outdate": outdateInp }
+    var dataJson = { "type": typeInp, "event": eventInp, "detail": detailInp, "date": dateInp, "outdate": outdateInp }
 
     $.ajax({
         url: `./api/save`,

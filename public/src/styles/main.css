@@ -1,42 +1,87 @@
 .event-box {
     position: relative;
-    width: 428px;
-    height: 65px;
+    width: 300px;
+    height: 50px;
     border: 0;
-    background: #F3F6F9;
+    background: #D8D8D8;
     border-radius: 10px;
+    left: 80px;
 }
 
 .detail-box {
     position: relative;
-    width: 428px;
-    height: 65px;
     border: 0;
-    background: #F3F6F9;
+    background: #D8D8D8;
     border-radius: 10px;
+    width: 605px;
+    height: 100px;
+    left: 28px;
 }
 
 .formev {
-    position: fixed;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    position: relative;
     width: 838px;
-    height: 537px;
-    left: 301px;
-    top: 244px;
-    border: 0;
-    background: #F64E60;
+    height: 525px;
+    top: 150px;
+    background: #ffffff;
     border-radius: 10px;
+    color: #000;
 }
 
 .button {
+    top: -20px;
     position: relative;
     margin: 8%;
     width: 192px;
-    height: 56px;
+    height: 52px;
     border: 0;
-    background: #F64E60;
+    background: #71FF7F;
     border-radius: 10px;
     text-align: center;
     font-size: 24px;
-    color: white;
+    color: black;
+    left: 66%;
 }
 
+footer {
+    background-color: #414141;
+    position: fixed;
+    width: 100vw;
+    height: 3.7em;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    box-shadow: #000 2px 0 4px;
+    justify-content: space-around;
+    transition: all 1s;
+    font-family: "Comfortaa", cursive;
+    z-index: 100;
+}
+
+.add {
+    top: 100px;
+    position: relative;
+    color: #000;
+    text-align: center;
+    margin: 0%;
+}
+
+.selectbox {
+    background: #D8D8D8;
+    left: 20px;
+}
+
+.texttopic {
+    position: relative;
+    color: #000;
+    text-align: center;
+    margin: 0%;
+}
+
+.datestart {
+    left: 50px;
+}

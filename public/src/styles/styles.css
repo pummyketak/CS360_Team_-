@@ -35,8 +35,9 @@
     position: fixed;
     height: 50px;
     width: 50px;
-    bottom: 23px;
+    bottom: 15px;
     right: 28px;
+    z-index: 101;
 }
 .image-upload>input {
     display: none;

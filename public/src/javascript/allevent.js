@@ -10,21 +10,32 @@ function loadDoc() {
         cache: false,
         beforeSend: () => {
             $.get("/api/getJson", function (responseText) {
-                console.log(responseText);
                 datajson = responseText;
                 datalength = responseText.length;
-                let table = document.getElementById("table");
+                let table1 = document.getElementById("divtable1");
+                let table2 = document.getElementById("divtable2");
 
                 for (let i = datalength - 1; i >= 0; i--) {
-                    let addtable = document.createElement('addtable');
+                    let addtable = document.createElement('div');
                     addtable.id = `add${i}`;
-                    addtable.innerHTML = `<table class="tablelist"  style="margin-top: 10%;">\n` +
-                        `            <tr><th><p>Event : ${datajson[i].event}</p></th>\n` +
-                        `            <th><p>รายละเอียด Event: ${datajson[i].detail}</p></th>\n` +
-                        `            <th><p>วันที่เริ่มจัด Event: ${datajson[i].date}</p></th>\n` +
-                        `            <th><p>วันที่สิ้นสุด Event: ${datajson[i].outdate}</p></th>\n` +
-                        `            <tr><th><a href="./info?id=${i}">ดูรายละเอียด</a></li></th>\n` +
-                        table.appendChild(addtable);
+                    if(datajson[i].type == "news"){
+                        addtable.innerHTML = `<div class="eventbox1">\n` +
+                        `            <p>News : ${datajson[i].event}</p>\n` +
+                        `            <p>รายละเอียด News: ${datajson[i].detail}</p>\n` +
+                        `            <p>วันที่เริ่มจัด News: ${datajson[i].date}</p>\n` +
+                        `            <p>วันที่สิ้นสุด News: ${datajson[i].outdate}</p>\n` +
+                        `            <a href="./info?id=${i}">ดูรายละเอียด</a></li>\n`
+                        table1.appendChild(addtable);
+                    }else if(datajson[i].type == "events"){
+                        addtable.innerHTML = `<div class="eventbox1">\n` +
+                        `            <p>Event : ${datajson[i].event}</p>\n` +
+                        `            <p>รายละเอียด Event: ${datajson[i].detail}</p>\n` +
+                        `            <p>วันที่เริ่มจัด Event: ${datajson[i].date}</p>\n` +
+                        `            <p>วันที่สิ้นสุด Event: ${datajson[i].outdate}</p>\n` +
+                        `            <a href="./info?id=${i}">ดูรายละเอียด</a></li>\n` 
+                        table2.appendChild(addtable);
+                    }
+                    
                 }
             });
         },

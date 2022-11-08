@@ -2,25 +2,83 @@
 <html lang="en">
 
 <head>
-    <title>Main Page</title>
-    <link rel="stylesheet" href="./src/styles/normalize.min.css" />
-    <link rel="stylesheet" href="./src/styles/compiled.min.css" />
-    <link rel="stylesheet" href="./src/styles/styles.css" />
+  <meta charset="UTF-8" />
+  <title>Admin Page</title>
+  <meta name="title" content="TU News">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TU News">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./src/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./src/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./src/images/favicon-16x16.png">
+
+  <link rel="manifest" href="./site.webmanifest">
+
+  <link rel="stylesheet" href="./src/styles/normalize.min.css" />
+  <link rel="stylesheet" href="./src/styles/compiled.min.css" />
+  <link rel="stylesheet" href="./src/styles/styles.css" />
 </head>
 
-<body>
-    <!-- header -->
+<body onload="loadDoc()">
+  <!-- header -->
   <header>
     <h2>TU News</h2>
-    <div>
-      <li>
-        <a href="/EventManage">Event</a>
-        <a href="/EventEdit">Event</a>
-      </li>
-    </div>
+    <li><a href="/">logout</a></li>
   </header>
 
+  <div class="divbody">
+    <h1>NEWS & ANNOUNCEMENTS</h1>
+    <div class="newstab">
+      <p>NEWS</p>
+    </div>
+
+    <div class="announcementtab">
+      <p>ANNOUNCEMENTS</p>
+    </div>
+
+    <button class="addnews"><a href="/EventManage">Add</a></button>
+    <div class="divtable1" id="divtable1">
+      <!--<div class="newsbox1">
+      <p>NEWS</p>
+      
+    </div>
+
+    <div class="newsbox1">
+      <p>NEWS</p>
+    </div>
+
+    <div class="newsbox1">
+      <p>NEWS</p>
+    </div>
+    </div>
+       -->
+    </div>
+  </div>
+  <div class="showevent">
+    <button class="addevents"><a href="/EventManage">Add</a></button>
+
+    <div class="divtable2" id="divtable2">
+      <!-- <div class="eventbox1">
+      <p>Event</p>
+    </div>
+
+    <div class="eventbox1">
+      <p>Event</p>
+    </div> -->
+    </div>
+  </div>
+
+  <footer>
+  </footer>
+
+  <script src="./src/javascript/jquery.min.js"></script>
+  <script src="./src/javascript/typed.min.js"></script>
+  <script src="./src/javascript/allevent.js"></script>
 </body>
-<script></script>
 
 </html>

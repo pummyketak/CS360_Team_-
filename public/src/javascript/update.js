@@ -18,6 +18,7 @@ function loadInfo() {
             $.get("/api/getJson", function (responseText) {
                 getjsons = responseText;
                 datajson = getjsons;
+                document.getElementById("event-type").value = datajson[i].type;
                 document.getElementById("event-name").value = datajson[i].event;
                 document.getElementById("event-detail").value = datajson[i].detail;
                 document.getElementById("event-date").value = datajson[i].date;
@@ -35,11 +36,12 @@ function loadInfo() {
 }
 
 const submitForm = () => {
+    const typeInp = $(".selectbox").val();
     const eventInp = $(".event-box").val();
     const detailInp = $(".detail-box").val();
     const dateInp = $("input#event-date").val();
     const outdateInp = $("input#event-outdate").val();
-    var dataJson = { "event": eventInp, "detail": detailInp, "date": dateInp, "outdate": outdateInp }
+    var dataJson = { "type": typeInp, "event": eventInp, "detail": detailInp, "date": dateInp, "outdate": outdateInp }
 
     $.ajax({
         url: `./api/update`,

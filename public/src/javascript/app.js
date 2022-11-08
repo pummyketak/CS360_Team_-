@@ -2,7 +2,7 @@
 var BooImg = 0;
 var chatimg = "";
 
-function B_IMG(){
+function B_IMG() {
   BooImg = 1;
 }
 function preview_2(obj) {
@@ -25,20 +25,20 @@ function preview_2(obj) {
 const submitForm = () => {
   const chatInput = $(".chat-input").val();
   if (chatInput != "" || BooImg == 1) {
-    if(BooImg == 1){
+    if (BooImg == 1) {
       $("main").append(`
     <div class="chat-msg-box clint">
       <img src="${chatimg}" style="max-height: 200;max-width: 200px;">
     </div>`);
-    BooImg = 0;
-    }else{
+      BooImg = 0;
+    } else {
       $("main").append(`
     <div class="chat-msg-box clint">
       <p>${chatInput}</p>
     </div>`);
     }
-    
-      
+
+
 
     $.ajax({
       url: `./api/question/?q=${encodeURIComponent(chatInput)}`,
@@ -76,7 +76,8 @@ const submitForm = () => {
   };
 }
 
-
+var datajson;
+let datalength;
 
 window.onload = () => {
   setTimeout(() => {
@@ -121,6 +122,46 @@ window.onload = () => {
       });
     },
   });
+
+  $.ajax({
+    url: `./api/getJson`,
+    method: "GET",
+    cache: false,
+    beforeSend: () => {
+      $.get("/api/getJson", function (responseText) {
+        datajson = responseText;
+        datalength = responseText.length;
+        let table1 = document.getElementById("divtable1");
+        let table2 = document.getElementById("divtable2");
+
+        for (let i = datalength - 1; i >= 0; i--) {
+          let addtable = document.createElement('div');
+          addtable.id = `add${i}`;
+          if (datajson[i].type == "news") {
+            addtable.innerHTML = `<div class="eventbox1">\n` +
+              `            <p>News : ${datajson[i].event}</p>\n` +
+              `            <p>รายละเอียด News: ${datajson[i].detail}</p>\n` +
+              `            <p>วันที่เริ่มจัด News: ${datajson[i].date}</p>\n` +
+              `            <p>วันที่สิ้นสุด News: ${datajson[i].outdate}</p>\n` 
+            table1.appendChild(addtable);
+          } else if (datajson[i].type == "events") {
+            addtable.innerHTML = `<div class="eventbox1">\n` +
+              `            <p>Event : ${datajson[i].event}</p>\n` +
+              `            <p>รายละเอียด Event: ${datajson[i].detail}</p>\n` +
+              `            <p>วันที่เริ่มจัด Event: ${datajson[i].date}</p>\n` +
+              `            <p>วันที่สิ้นสุด Event: ${datajson[i].outdate}</p>\n`
+            table2.appendChild(addtable);
+          }
+
+        }
+      });
+    },
+    success: () => {
+    },
+    error: () => {
+      console.log(error);
+    }
+  })
 };
 
 const toogleShowSuggestions = () => {
