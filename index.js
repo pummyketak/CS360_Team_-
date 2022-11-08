@@ -215,7 +215,7 @@ const sendAnswer = async (req, res) => {
           && humanInput.length <= 20
           && !/(\s{1,})/gim.test(humanInput)
         ) {
-          responseText = "You are probably hitting random keys :D";
+          responseText = "คุณพิมพ์สุ่มมาใช่ไหม :)";
         } else {
           responseText = _.sample(fallbackChat);
         }

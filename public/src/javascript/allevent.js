@@ -1,4 +1,5 @@
-
+var count1 = 0;
+var count2 = 0;
 var datajson;
 let datalength;
 function loadDoc() {
@@ -18,24 +19,36 @@ function loadDoc() {
                 for (let i = datalength - 1; i >= 0; i--) {
                     let addtable = document.createElement('div');
                     addtable.id = `add${i}`;
-                    if(datajson[i].type == "news"){
-                        addtable.innerHTML = `<div class="eventbox1">\n` +
-                        `            <p>News : ${datajson[i].event}</p>\n` +
-                        `            <p>รายละเอียด News: ${datajson[i].detail}</p>\n` +
-                        `            <p>วันที่เริ่มจัด News: ${datajson[i].date}</p>\n` +
-                        `            <p>วันที่สิ้นสุด News: ${datajson[i].outdate}</p>\n` +
-                        `            <a href="./info?id=${i}">ดูรายละเอียด</a></li>\n`
-                        table1.appendChild(addtable);
-                    }else if(datajson[i].type == "events"){
-                        addtable.innerHTML = `<div class="eventbox1">\n` +
-                        `            <p>Event : ${datajson[i].event}</p>\n` +
-                        `            <p>รายละเอียด Event: ${datajson[i].detail}</p>\n` +
-                        `            <p>วันที่เริ่มจัด Event: ${datajson[i].date}</p>\n` +
-                        `            <p>วันที่สิ้นสุด Event: ${datajson[i].outdate}</p>\n` +
-                        `            <a href="./info?id=${i}">ดูรายละเอียด</a></li>\n` 
-                        table2.appendChild(addtable);
+                    if (datajson[i].type == "news") {
+                        if (count1 < 4) {
+                            addtable.innerHTML = `<div class="eventbox1">\n` +
+                                `            <h3>News</h3><br>\n` +
+                                `            <h4>${datajson[i].event}</h4>\n` +
+                                `            <p>รายละเอียด: ${datajson[i].detail}</p><br>\n` +
+                                `            <p>วันที่เริ่ม: ${datajson[i].date}</p>\n` +
+                                `            <p>วันที่จบ: ${datajson[i].outdate}</p>\n` +
+                                `            <a href="./info?id=${i}">แก้ไข</a></li>\n`
+                            table1.appendChild(addtable);
+                        }else {
+                            break;
+                        }
+                        count1 = count1 + 1;
+                    } else if (datajson[i].type == "events") {
+                        if (count2 < 4) {
+                            addtable.innerHTML = `<div class="eventbox1">\n` +
+                                `            <h3>Events</h3><br>\n` +
+                                `            <h4>${datajson[i].event}</h4>\n` +
+                                `            <p>รายละเอียด: ${datajson[i].detail}</p><br>\n` +
+                                `            <p>วันที่เริ่ม: ${datajson[i].date}</p>\n` +
+                                `            <p>วันที่จบ: ${datajson[i].outdate}</p>\n` +
+                                `            <a href="./info?id=${i}">แก้ไข</a></li>\n`
+                            table2.appendChild(addtable);
+                        }else {
+                            break;
+                        }
+                        count2 = count2 + 1;
                     }
-                    
+
                 }
             });
         },
