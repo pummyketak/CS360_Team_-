@@ -23,6 +23,7 @@ function loadInfo() {
                 document.getElementById("event-detail").value = datajson[i].detail;
                 document.getElementById("event-date").value = datajson[i].date;
                 document.getElementById("event-outdate").value = datajson[i].outdate;
+                document.getElementById("myfile").value = datajson[i].img;
             });
         },
         success: () => {
@@ -41,7 +42,8 @@ const submitForm = () => {
     const detailInp = $(".detail-box").val();
     const dateInp = $("input#event-date").val();
     const outdateInp = $("input#event-outdate").val();
-    var dataJson = { "type": typeInp, "event": eventInp, "detail": detailInp, "date": dateInp, "outdate": outdateInp }
+    const imgInp = $("input#myfile").val().replace(/C:\\fakepath\\/i, '');
+    var dataJson = { "type": typeInp, "event": eventInp, "detail": detailInp, "date": dateInp, "outdate": outdateInp, "img": "./public/src/images/events/"+imgInp }
 
     $.ajax({
         url: `./api/update`,
@@ -68,6 +70,24 @@ const submitForm = () => {
         complete: () => {
             window.location.href = "/AdminPage"
         },
+    });
+
+    var form = $('#event-form')[0];
+    var formData = new FormData(form);
+    console.log(formData)
+    $.ajax({
+        url: `./api/upload`,
+        method: "POST",
+        data: formData,
+        processData: false,
+        contentType: false,
+        cache: false,
+        success: function (r) {
+            console.log("result", r)
+        },
+        error: function (e) {
+            console.log("some error", e);
+        }
     });
 };
 

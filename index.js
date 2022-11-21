@@ -17,6 +17,10 @@ const dotenv = require("dotenv");
 const express = require("express");
 const compression = require("compression");
 const serveStatic = require("serve-static");
+const formidable = require('formidable');
+const flash = require('connect-flash');
+const session = require('express-session');
+const multer = require("multer");
 
 const pkg = require("./package.json");
 const mainChat = require("./intents/Main_Chat.json");
@@ -36,6 +40,17 @@ const bugReportUrl = process.env.DEVELOPER_NAME || pkg.bugs.url;
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+app.use(express.static(__dirname + '/public'));
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, './public/src/images/events')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  }
+})
+const upload = multer({ storage: storage });
 
 let allQustions = [];
 
@@ -289,10 +304,10 @@ const updateJson = async (req, res) => {
     // outputJson = JSON.parse(data);
     let datajs = fs.readFileSync('./public/src/json/data.json', 'utf-8');
     outputJson = JSON.parse(datajs);
-    spliceJson = outputJson.splice(num,1, json);
+    spliceJson = outputJson.splice(num, 1, json);
     outputJson = JSON.stringify(outputJson);
 
-    fs.writeFileSync('./public/src/json/data.json',  outputJson)
+    fs.writeFileSync('./public/src/json/data.json', outputJson)
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.write('อัพเดทสถานะเรียบร้อย');
     res.end();
@@ -307,6 +322,10 @@ const getJson = async (req, res) => {
   res.send(dataJsonp);
   // res.send(datajs);
 };
+
+const mainP = async (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+}
 
 const loginP = async (req, res) => {
   try {
@@ -355,9 +374,58 @@ const eventE = async (req, res) => {
     console.log(err);
   }
 }
+
 const infoP = async (req, res) => {
   try {
     const mpHtml = await fs.readFileSync(path.join(__dirname, "public/info.html"), "utf8",)
+    res.status(200).send(mpHtml);
+  } catch (err) {
+    const pageNotFoundHtml = await fs.readFileSync(
+      path.join(__dirname, "public/404.html"), "utf8",);
+    res.status(404).send(pageNotFoundHtml);
+    console.log(err);
+  }
+}
+
+const seeAllN = async (req, res) => {
+  try {
+    const mpHtml = await fs.readFileSync(path.join(__dirname, "public/seeallnews.html"), "utf8",)
+    res.status(200).send(mpHtml);
+  } catch (err) {
+    const pageNotFoundHtml = await fs.readFileSync(
+      path.join(__dirname, "public/404.html"), "utf8",);
+    res.status(404).send(pageNotFoundHtml);
+    console.log(err);
+  }
+}
+
+const seeAllE = async (req, res) => {
+  try {
+    const mpHtml = await fs.readFileSync(path.join(__dirname, "public/seeallevents.html"), "utf8",)
+    res.status(200).send(mpHtml);
+  } catch (err) {
+    const pageNotFoundHtml = await fs.readFileSync(
+      path.join(__dirname, "public/404.html"), "utf8",);
+    res.status(404).send(pageNotFoundHtml);
+    console.log(err);
+  }
+}
+
+const seeAllNa = async (req, res) => {
+  try {
+    const mpHtml = await fs.readFileSync(path.join(__dirname, "public/sallnewsad.html"), "utf8",)
+    res.status(200).send(mpHtml);
+  } catch (err) {
+    const pageNotFoundHtml = await fs.readFileSync(
+      path.join(__dirname, "public/404.html"), "utf8",);
+    res.status(404).send(pageNotFoundHtml);
+    console.log(err);
+  }
+}
+
+const seeAllEa = async (req, res) => {
+  try {
+    const mpHtml = await fs.readFileSync(path.join(__dirname, "public/salleventsad.html"), "utf8",)
     res.status(200).send(mpHtml);
   } catch (err) {
     const pageNotFoundHtml = await fs.readFileSync(
@@ -380,6 +448,12 @@ const notFound = async (req, res) => {
   }
 };
 
+const uploadImg = async (req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.write('อัพเดทสถานะเรียบร้อย');
+  res.end();
+};
+
 app.use(cors());
 app.use(compression());
 app.set("json spaces", 4);
@@ -389,15 +463,19 @@ app.get("/api/welcome", sendWelcomeMessage);
 app.get("/api/allQuestions", sendAllQuestions);
 app.use(serveStatic(path.join(__dirname, "public")));
 //app.get("*", notFound);
+app.get('/', mainP);
 app.get("/AdminLogin", loginP);
 app.get("/AdminPage", adminP);
 app.get("/EventManage", eventP);
 app.get("/EventEdit", eventE);
+app.get("/seeAllNews", seeAllN);
+app.get("/seeAllEvents", seeAllE);
+app.get("/seeAllNewsAdmin", seeAllNa);
+app.get("/seeAllEventsAdmin", seeAllEa);
 app.get("/info", infoP);
 app.post("/api/save", saveJson);
 app.post("/api/update", updateJson);
 app.get("/api/getJson", getJson);
+app.post('/api/upload', upload.single('myfile'), uploadImg);
 
 app.listen(port, () => console.log(`app listening on port ${port}!. On http://localhost:${port}`));
-
-

@@ -120,12 +120,20 @@ header h2 {
 
 main {
     padding: 15px;
-    display: inline-block;
+    display: inline-flexbox;
     min-height: 382px;
     max-height: 382px;
     width: 350px;
     background: white;
     overflow-y: auto;
+    margin: 0px auto;
+}
+
+#inner {
+    width: 100%;
+    overflow: auto;
+    height: 100%;
+    padding-right: 15px;
 }
 
 .chat-msg-box {
@@ -392,6 +400,22 @@ footer {
     display: flex;
     transition: all 1s;
 }
+
+.divtable11 {
+    top: 25%;
+    position: fixed;
+    left: 100px;
+    height: 600px;
+    right: 100px;
+    margin: 0%;
+    width: auto;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    transition: all 1s;
+}
+
 .divtable2 {
     right: 100px;
     width: auto;
@@ -431,6 +455,36 @@ footer {
     margin: 0%;
 }
 
+.indexreadmore {
+
+    top: -60px;
+    width: 140px;
+    height: 30px;
+    padding: 9px;
+    border-radius: 10px;
+    color: white;
+    position: relative;
+    background-color: #B42935;
+    left: 73%;
+    margin: 0%;
+    border: 0;
+}
+
+.eventreadmore {
+
+    top: 650px;
+    width: 140px;
+    height: 30px;
+    padding: 9px;
+    border-radius: 10px;
+    color: #B42935;
+    position: fixed;
+    background-color: #ffffff;
+    left: 70%;
+    margin: 0%;
+    border: 0;
+}
+
 .addnews {
 
     top: 180px;
@@ -443,6 +497,7 @@ footer {
     background-color: #B42935;
     right: 330px;
     margin: 0%;
+    border: 0;
 }
 
 .editnews {
@@ -461,19 +516,19 @@ footer {
 
 .newsbox1 {
     border-radius: 25px;
-    padding: 20px; 
+    padding: 20px;
     width: 300px;
     height: 300px;
     border-radius: 10px;
     color: black;
-    position: relative;
+    position: flex;
     margin: 0%;
     background-color: white;
 }
 
 .newsbox2 {
     border-radius: 25px;
-    padding: 20px; 
+    padding: 20px;
     width: 300px;
     height: 300px;
     top: -280px;
@@ -487,7 +542,7 @@ footer {
 
 .newsbox3 {
     border-radius: 25px;
-    padding: 20px; 
+    padding: 20px;
     width: 300px;
     height: 300px;
     top: -580px;
@@ -501,7 +556,7 @@ footer {
 
 .showevent {
     position: fixed;
-    background-color:#B42935;
+    background-color: #B42935;
     top: 63%;
     height: 320px;
     width: 100%;
@@ -512,12 +567,12 @@ footer {
 
 .eventbox1 {
     border-radius: 25px;
-    padding: 20px; 
+    padding: 20px;
     width: 230px;
     height: 210px;
     border-radius: 10px;
     color: black;
-    position: relative;
+    position: flex;
     margin: 0%;
     background-color: white;
 }
@@ -525,7 +580,7 @@ footer {
 .eventbox2 {
     top: 50px;
     border-radius: 25px;
-    padding: 20px; 
+    padding: 20px;
     width: 230px;
     height: 210px;
     border-radius: 10px;
@@ -547,6 +602,7 @@ footer {
     background-color: #ffffff;
     right: 330px;
     margin: 0%;
+    border: 0;
 }
 
 .editevents {
@@ -562,8 +618,9 @@ footer {
     right: 250px;
     margin: 0%;
 }
+
 footer {
-    
+
     background-color: #414141;
     position: fixed;
     width: 100vw;
@@ -577,4 +634,5 @@ footer {
     font-family: "Comfortaa", cursive;
     z-index: 100;
 }
+
 /*# sourceMappingURL=compiled.min.css.map */

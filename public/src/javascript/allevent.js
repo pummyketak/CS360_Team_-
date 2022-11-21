@@ -22,7 +22,7 @@ function loadDoc() {
                     if (datajson[i].type == "news") {
                         if (count1 < 4) {
                             addtable.innerHTML = `<div class="eventbox1">\n` +
-                                `            <h3>News</h3><br>\n` +
+                                `            <h3>${datajson[i].type}</h3><br>\n` +
                                 `            <h4>${datajson[i].event}</h4>\n` +
                                 `            <p>รายละเอียด: ${datajson[i].detail}</p><br>\n` +
                                 `            <p>วันที่เริ่ม: ${datajson[i].date}</p>\n` +
@@ -36,7 +36,7 @@ function loadDoc() {
                     } else if (datajson[i].type == "events") {
                         if (count2 < 4) {
                             addtable.innerHTML = `<div class="eventbox1">\n` +
-                                `            <h3>Events</h3><br>\n` +
+                                `            <h3>${datajson[i].type}</h3><br>\n` +
                                 `            <h4>${datajson[i].event}</h4>\n` +
                                 `            <p>รายละเอียด: ${datajson[i].detail}</p><br>\n` +
                                 `            <p>วันที่เริ่ม: ${datajson[i].date}</p>\n` +

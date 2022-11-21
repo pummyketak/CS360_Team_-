@@ -26,13 +26,13 @@ const submitForm = () => {
   const chatInput = $(".chat-input").val();
   if (chatInput != "" || BooImg == 1) {
     if (BooImg == 1) {
-      $("main").append(`
+      $("#inner").append(`
     <div class="chat-msg-box clint">
       <img src="${chatimg}" style="max-height: 200;max-width: 200px;">
     </div>`);
       BooImg = 0;
     } else {
-      $("main").append(`
+      $("#inner").append(`
     <div class="chat-msg-box clint">
       <p>${chatInput}</p>
     </div>`);
@@ -47,7 +47,7 @@ const submitForm = () => {
       beforeSend: () => {
         $(".chat-input").val("");
         $(".typing").show();
-        $("main").append(`
+        $("#inner").append(`
         <div class="chat-msg-box bot">
           <div class="spinner">
             <div class="bounce1"></div>
@@ -88,7 +88,7 @@ window.onload = () => {
         url: "./api/welcome",
         beforeSend: () => {
           $(".typing").show();
-          $("main").append(`
+          $("#inner").append(`
             <div class="chat-msg-box bot">
               <div class="spinner">
                 <div class="bounce1"></div>
@@ -142,7 +142,7 @@ window.onload = () => {
           if (datajson[i].type == "news") {
             if (count1 < 4) {
               addtable.innerHTML = `<div class="eventbox1">\n` +
-                  `            <h3>News</h3><br>\n` +
+                  `            <h3>${datajson[i].type}</h3><br>\n` +
                   `            <h4>${datajson[i].event}</h4>\n` +
                   `            <p>รายละเอียด: ${datajson[i].detail}</p><br>\n` +
                   `            <p>วันเวลา: ${datajson[i].date}</p>\n`
@@ -154,7 +154,7 @@ window.onload = () => {
           } else if (datajson[i].type == "events") {
             if (count2 < 4) {
               addtable.innerHTML = `<div class="eventbox1">\n` +
-                  `            <h3>Events</h3><br>\n` +
+                  `            <h3>${datajson[i].type}</h3><br>\n` +
                   `            <h4>${datajson[i].event}</h4>\n` +
                   `            <p>รายละเอียด: ${datajson[i].detail}</p><br>\n` +
                   `            <p>วันเวลาที่เริ่ม: ${datajson[i].date}</p>\n` +
@@ -178,15 +178,15 @@ window.onload = () => {
 };
 
 const toogleShowSuggestions = () => {
-  if ($("main").css("display") == "none") {
+  if ($("#inner").css("display") == "none") {
     $(".all-questions").hide();
     $("header img").attr("src", "./src/images/chat_icon.png");
-    $("main").show();
+    $("#inner").show();
     $("footer").show();
   } else {
     $(".all-questions").show();
     $("header img").attr("src", "./src/images/close.png");
-    $("main").hide();
+    $("#inner").hide();
     $("footer").hide();
   }
 };

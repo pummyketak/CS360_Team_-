@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="./src/styles/compiled.min.css" />
     <link rel="stylesheet" href="./src/styles/styles.css" />
     <link rel="stylesheet" href="./src/styles/main.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 
 <body>
     <!-- header -->
     <header>
-        <h2>TU News</h2>
+        <h2><a href="/AdminPage">TU News</a></h2>
         <li><a href="/">logout</a></li>
     </header>
     <div class="add">
@@ -20,7 +21,7 @@
     </div>
 
     <div class="formev">
-        <form id="event-form"><br><br><br><br>
+        <form id="event-form" enctype="multipart/form-data" ><br><br><br><br>
             <label for="topictype">ประเภทของข้อมูล</label>
             <select class="selectbox">
                 <option value="">---โปรดเลือก---</option>
@@ -35,12 +36,11 @@
             <label for="event-date">วันที่เริ่มจัด Event</label>
             <input type="datetime-local" id="event-date" class="datestart"/>&nbsp;&nbsp; <label for="event-outdate">วันที่สิ้นสุด Event</label> <input type="datetime-local" id="event-outdate" /><br><br><br>
             <label for="myfile">เลือกรูปภาพ</label>
-            <input type="file" id="myfile" name="myfile">
+            <input type="file" id="myfile" name="myfile" accept="image/*">
             <button type="submit" class="button">ยืนยัน</button>
             
         </form>
     </div>
-    <script src="./src/javascript/jquery.min.js"></script>
     <script src="./src/javascript/typed.min.js"></script>
     <script src="./src/javascript/update.js"></script>
 
@@ -48,5 +48,4 @@
     </footer>
 
 </body>
-
 </html>
