@@ -83,7 +83,6 @@ body {
 
 header {
     background-color: #B42935;
-    position: fixed;
     top: 0;
     width: 100vw;
     height: 3.7em;
@@ -98,12 +97,20 @@ header {
 }
 
 header h2 {
-    font-size: 1.35em;
-    background: linear-gradient(141.27deg, #ff904e -4.24%, #ff5982 21.25%, #ec68f4 44.33%, #79e2ff 83.46%);
-    background-size: 200%;
+    font-size: 1.60em;
+    position:relative; left:-20%;
+    background-color: white;
+    background-size: 300%;
     -webkit-background-clip: text;
     background-clip: text;
-    animation: gradient-heading 10s ease infinite;
+    -webkit-text-fill-color: transparent
+}
+.login{
+    background-color: white;
+    
+    background-size: 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent
 }
 
@@ -245,10 +252,10 @@ footer {
     width: 82vw;
     height: 2.5em;
     border-radius: .5em;
-    background: #4c4c4c;
-    border: 1px solid #6e6d6d;
+    background: #ffffff;
+    border: 0px;
     padding-left: .5em;
-    color: #dbdbdb
+    color: #000000
 }
 
 .chat-input::placeholder {
@@ -276,11 +283,11 @@ footer {
 }
 
 .chat-submit svg {
-    fill: orange
+    fill: rgb(0, 0, 0)
 }
 
 .chat-submit svg:hover {
-    fill: chartreuse
+    fill: rgb(175, 174, 174)
 }
 
 .spinner {
@@ -420,12 +427,12 @@ footer {
     right: 100px;
     width: auto;
     position: fixed;
-    top: 70%;
+    top: 69%;
     justify-content: space-around;
     display: flex;
     transition: all 1s;
     height: 210px;
-    left: 290px;
+    left: 15%;
     margin: 0%;
 }
 
@@ -443,7 +450,7 @@ footer {
 
 .announcementtab {
 
-    top: -30px;
+    top: 350px;
     width: 160px;
     height: 30px;
     padding: 9px;
@@ -451,54 +458,67 @@ footer {
     color: white;
     position: relative;
     background-color: #B42935;
-    left: 100px;
     margin: 0%;
-}
-
-.indexreadmore {
-
-    top: -60px;
-    width: 140px;
-    height: 30px;
-    padding: 9px;
-    border-radius: 10px;
-    color: white;
-    position: relative;
-    background-color: #B42935;
-    left: 73%;
-    margin: 0%;
-    border: 0;
 }
 
 .eventreadmore {
 
-    top: 650px;
+    top: 65%;
     width: 140px;
-    height: 30px;
-    padding: 9px;
-    border-radius: 10px;
-    color: #B42935;
-    position: fixed;
-    background-color: #ffffff;
-    left: 70%;
-    margin: 0%;
-    border: 0;
-}
-
-.addnews {
-
-    top: 180px;
-    width: 55px;
     height: 30px;
     padding: 9px;
     border-radius: 10px;
     color: white;
     position: fixed;
-    background-color: #B42935;
-    right: 330px;
+    background-color: #000000;
+    left: 85%;
     margin: 0%;
     border: 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent
 }
+
+.indexreadmore {
+
+    top: 20%;
+    width: 140px;
+    height: 30px;
+    padding: 9px;
+    border-radius: 10px;
+    position: fixed;
+    background-color: #000000;
+    left: 85%;
+    margin: 0%;
+    border: 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent
+}
+
+.addnews {
+    top: 20%;
+    width: 55px;
+    height: 30px;
+    padding: 9px;
+    border-radius: 10px;
+    position: fixed;
+    right: 15%;
+    margin: 0%;
+    border: 0;
+    background-color: transparent;
+    
+}
+a.link{
+    color: rgb(0, 0, 0);
+    background-color: transparent;
+    text-decoration: underline;
+}
+a:visited {
+    color: black;
+    background-color: transparent;
+    text-decoration: underline;
+  }
 
 .editnews {
 
@@ -572,7 +592,7 @@ footer {
     height: 210px;
     border-radius: 10px;
     color: black;
-    position: flex;
+    position: relative;
     margin: 0%;
     background-color: white;
 }
@@ -592,15 +612,15 @@ footer {
 
 .addevents {
 
-    top: 650px;
+    top: 65%;
     width: 55px;
     height: 30px;
     padding: 9px;
     border-radius: 10px;
     color: rgb(0, 0, 0);
     position: fixed;
-    background-color: #ffffff;
-    right: 330px;
+    background-color: transparent;
+    right: 15%;
     margin: 0%;
     border: 0;
 }
