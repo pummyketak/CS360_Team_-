@@ -143,7 +143,8 @@ window.onload = () => {
               `            <h3>${datajson[i].type}</h3><br>\n` +
               `            <h4>${datajson[i].event}</h4>\n` +
               `            <p>รายละเอียด: ${datajson[i].detail}</p><br>\n` +
-              `            <p>วันเวลา: ${datajson[i].date}</p>\n`
+              `            <p>วันเวลา: ${datajson[i].date}</p>\n` +
+              `            <button type="submit" class="popupBtn" onclick="openPopup(${i})">อ่านเพิ่มเติม</button>\n`
             table1.appendChild(addtable);
           } 
         }
