@@ -41,7 +41,7 @@ const bugReportUrl = process.env.DEVELOPER_NAME || pkg.bugs.url;
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public'))) ;
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, './public/src/images/events')
