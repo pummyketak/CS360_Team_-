@@ -5,7 +5,7 @@ const submitForm = () => {
     const dateInp = $("input#event-date").val();
     const outdateInp = $("input#event-outdate").val();
     const imgInp = $("input#myfile").val().replace(/C:\\fakepath\\/i, '');
-    var dataJson = { "type": typeInp, "event": eventInp, "detail": detailInp, "date": dateInp, "outdate": outdateInp, "img": "./public/src/images/events/" + imgInp }
+    var dataJson = { "type": typeInp, "event": eventInp, "detail": detailInp, "date": dateInp, "outdate": outdateInp, "img": "./src/images/events/" + imgInp }
 
     $.ajax({
         url: `./api/save`,
