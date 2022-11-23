@@ -1,5 +1,3 @@
-const { pageError } = require("wikipedia/dist")
-
 describe('TU News main page', () => {
     beforeAll(async () => {
         await page.goto('http://localhost:3000')
@@ -16,25 +14,8 @@ describe('TU News main page', () => {
         await page.click('button.open-button')
 
         //expect()
-
-
-    
     })
 
-    
-
-   // it('should Send Text to Chatbot and Chatbot will send text back', async () => {
-     //   await page.click('button.open-button');
-       // await page.type('input.chat-input', 'ปฏิทินกิจกรรมต่างๆจะสามารถดูได้จากที่ไหนครับ');
-        //await page.click('Button.chat-submit');
-        // await Promise.all([
-        //     page.$eval('Button.chat-submit', element =>
-        //     element.click()
-        // )
-        // ])
-        // await expect (page).toMatch('main', { text: 'สามารถดูปฏิทินกิจกรรมได้ที่ ลิงค์: https://www.reg.tu.ac.th/th/Picture/AttFile/c4c86cd7-9ad7-4bb6-b591-4fa2762e5e55' })
-        //await page.click('button.open-button');
-    //})
     it('should Display Login Admin Page on click button', async () => {
         await Promise.all([
             page.$eval('a#btnlogin', element =>
@@ -100,15 +81,26 @@ describe('Admin Page',()=> {
     it('should Display EventManage while click add', async () => {
         await page.goto('http://localhost:3000/AdminPage');
         await Promise.all([
-            page.$eval('a#add', element =>
+            page.$eval('a#add1', element =>
                 element.click()
             ),
             await page.waitForNavigation(),
         ])
         expect(page.url()).toBe('http://localhost:3000/EventManage');
+
+        await page.goto('http://localhost:3000/AdminPage');
+        await Promise.all([
+            page.$eval('a#add2', element =>
+                element.click()
+            ),
+            await page.waitForNavigation(),
+        ])
+        expect(page.url()).toBe('http://localhost:3000/EventManage');
+
+
     })
 
-    it('should Display seeAllNewsAdmin while click readmore', async () => {
+    it('should Display seeAllNewsAdmin while click readmore of news', async () => {
         await page.goto('http://localhost:3000/AdminPage');
         await Promise.all([
             page.$eval('a#readmore', element =>
@@ -119,7 +111,7 @@ describe('Admin Page',()=> {
         expect(page.url()).toBe('http://localhost:3000/seeAllNewsAdmin');
     })
 
-    it('should Display seeAllEventsAdmin while click readmoreEvent', async () => {
+    it('should Display seeAllEventsAdmin while click readmore of event', async () => {
         await page.goto('http://localhost:3000/AdminPage');
         await Promise.all([
             page.$eval('a#readmoreevent', element =>
@@ -140,9 +132,100 @@ describe('Admin Page',()=> {
         ])
         expect(page.url()).toBe('http://localhost:3000/');
     })
+})
+
+describe('EventManage Page',() => {
+    beforeAll(async ()=>{
+        await page.goto('http://localhost:3000/EventManage');
+    })
+
+    it('should Display AdminPage while click logo', async () => {
+        await Promise.all([
+            page.$eval('a#logo', element =>
+                element.click()
+            ),
+            await page.waitForNavigation(),
+        ])
+        expect(page.url()).toBe('http://localhost:3000/AdminPage');
+    })
+
+    it('should Display Mainpage while click logout', async () => {
+        await page.goto('http://localhost:3000/EventManage');
+        await Promise.all([
+            page.$eval('a#btnlogout', element =>
+                element.click()
+            ),
+            await page.waitForNavigation(),
+        ])
+        expect(page.url()).toBe('http://localhost:3000/');
+    })
+
+})
+
+describe('seeAllNews Page',() => {
+    beforeAll(async ()=>{
+        await page.goto('http://localhost:3000/seeAllNewsAdmin');
+    })
+
+    it('should Display AdminPage while click logo', async () => {
+        await Promise.all([
+            page.$eval('a#logo', element =>
+                element.click()
+            ),
+            await page.waitForNavigation(),
+        ])
+        expect(page.url()).toBe('http://localhost:3000/AdminPage');
+    })
+
+   /* it('should Display Pop-up while click readmore ', async() => {
+        
+        await Promise.all([
+            await page.waitForSelector('button#o37', { visible: true }),
+            await page.$eval('button#o37', element =>
+                element.click()
+            )
+        ])
+        const gettext = await page.$eval('h4', (el) => el.innerText)
+        expect(gettext).toBe('newsd')
 
 
+    })*/
 
+    it('should Display Mainpage while click logout', async () => {
+        await page.goto('http://localhost:3000/seeAllNewsAdmin');
+        await Promise.all([
+            page.$eval('a#btnlogout', element =>
+                element.click()
+            ),
+            await page.waitForNavigation(),
+        ])
+        expect(page.url()).toBe('http://localhost:3000/');
+    })
+})
 
+describe('seeAllEventsAdmin Page',() => {
+    beforeAll(async ()=>{
+        await page.goto('http://localhost:3000/seeAllEventsAdmin');
+    })
 
+    it('should Display AdminPage while click logo', async () => {
+        await Promise.all([
+            page.$eval('a#logo', element =>
+                element.click()
+            ),
+            await page.waitForNavigation(),
+        ])
+        expect(page.url()).toBe('http://localhost:3000/AdminPage');
+    })
+
+    it('should Display Mainpage while click logout', async () => {
+        await page.goto('http://localhost:3000/seeAllEventsAdmin');
+        await Promise.all([
+            page.$eval('a#btnlogout', element =>
+                element.click()
+            ),
+            await page.waitForNavigation(),
+        ])
+        expect(page.url()).toBe('http://localhost:3000/');
+    })
 })

@@ -7,7 +7,7 @@ function openPopup(x){
     `            <p>รายละเอียด: ${datajson[i].detail}</p><br>\n` +
     `            <p>วันเวลาที่เริ่ม: ${datajson[i].date}</p>\n` +
     `            <p>วันเวลาที่จบ: ${datajson[i].outdate}</p>\n` +
-    `             <button type="button" onclick="closePopup()">ปิด</button>\n` +
+    `             <button type="button" onclick="closePopup()" id="c${i}">ปิด</button>\n` +
     `            </div>\n`
     popup.classList.add("open-popup") ;
 }
