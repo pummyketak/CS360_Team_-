@@ -83,6 +83,7 @@ body {
 
 header {
     background-color: #B42935;
+    position: fixed;
     top: 0;
     width: 100vw;
     height: 3.7em;
@@ -416,7 +417,8 @@ footer {
     right: 100px;
     margin: 0%;
     width: auto;
-    justify-content: space-around;
+    /* justify-content: space-around; */
+    overflow-y: auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
