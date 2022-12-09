@@ -27,3 +27,31 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       - run: npm start & npm test
+      - run: mkdir docker
+      - run: cd docker
+      - run: touch setup.sh
+      - run: echo '#!/bin/sh' >> setup.sh
+      - run: echo 'yum install git -y' >> setup.sh
+      - run: echo 'yum install gcc-c++ make -y' >> setup.sh
+      - run: echo 'curl -sL https://rpm.nodesource.com/setup_16.x | bash' >> setup.sh
+      - run: echo 'yum install nodejs -y' >> setup.sh
+      - run: echo 'git clone https://github.com/Immanewbies/TU-News   ' >> setup.sh
+      - run: echo 'cd TU-News' >> setup.sh
+      - run: echo 'npm ci' >> setup.sh
+      - run: echo 'yum -y update' >> setup.sh
+      - run: echo 'npm start' >> setup.sh
+      - run: touch Dockerfile
+      - run: echo 'FROM amazonlinux' >> Dockerfile
+      - run: echo 'EXPOSE 3000' >> Dockerfile
+      - run: echo 'COPY setup.sh /' >> Dockerfile
+      - run: echo 'RUN chmod 705 ./setup.sh' >> Dockerfile
+      - run: echo 'CMD ["./setup.sh"]' >> Dockerfile
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - run: docker image build -t ${{ secrets.DOCKERHUB_USERNAME }}/tunews:latest .
+      - run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/tunews:latest
+      
+      
